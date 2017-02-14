@@ -1,0 +1,24 @@
+<ion-modal-view id="search-modal">
+  <ion-header-bar class="modal-header">
+    
+    <div class="wrapper row">
+      <div class="col-80">
+        <form name="navSearch" ng-submit="executeSearch(searchQuery)">
+          <input type="text" name="searchbar" ng-model="searchQuery" autofocus />
+        </form>
+      </div>
+      <div class="col-20">
+        <button class="navbar-cancel" ng-click="modalCommand('hide')">Cancel</button>
+      </div>
+    </div>
+    
+  </ion-header-bar>
+  <ion-content>
+    <div class="wrapper content">
+      <div class="placeholder">
+        <i class="ion-ios-search search"></i>
+        <span>What are you looking for?</span>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>

@@ -1,0 +1,24 @@
+{
+  "name": "Oss",
+  "author": "Manuel Puentes Reed <mpreed@kpd-i.com>",
+  "private": "true",
+  "devDependencies": {},
+  "dependencies": {
+    "angular": "~1.4.8",
+    "ngCordova": "~0.1.23-alpha",
+    "angular-resource": "~1.4.8",
+    "ionic": "~1.2.1",
+    "robotodraft": "*",
+    "moment": "*",
+    "ionic-datepicker": "^1.1.0",
+    "sendbird": "*",
+    "ng-file-upload": "^12.0.4",
+    "ionic-toast": "^0.4.1"
+  },
+  "resolutions": {
+    "angular": "1.4.3",
+    "ionic": "~1.2.1",
+    "angular-animate": "1.4.3",
+    "angular-sanitize": "1.4.3"
+  }
+}

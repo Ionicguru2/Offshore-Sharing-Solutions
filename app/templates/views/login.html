@@ -1,0 +1,35 @@
+<ion-nav-view name="Login">
+  <ion-content id="login">
+    <div class="wrapper">
+      <form class="inner" handle-phone-submit name="loginForm" ng-submit="login(creds.user, creds.pass)">
+        <ion-grid class="login-inputs" ng-show="platformReady">
+          <ion-row id="email" ng-class="{ 'api-error': error.email==true }" ng-click="reset()">
+            <ion-col width-10><i class="ion-ios-email-outline"></i></ion-col>
+            <ion-col width-90>
+              <input type="text" placeholder="Email" autocapitalize="none" autocomplete="off" name="user" ng-model="creds.user" ng-focus="focusPosition()" ng-blur="resetPosition()"></input>
+              <span class="error" ng-show="error.email==true">Email not found.</span>
+            </ion-col>
+          </ion-row>
+          <ion-row id="password" ng-class="{ 'api-error': error.password==true }" ng-click="reset()">
+            <ion-col width-10><i class="ion-ios-locked-outline"></i></ion-col>
+            <ion-col width-90>
+              <input type="password" placeholder="Password" autocapitalize="none" autocomplete="off" name="pass" ng-model="creds.pass" ng-focus="focusPosition()" ng-blur="resetPosition()"></input>
+              <span class="error" ng-show="error.password==true">Invalid email/password.</span>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><button type="submit" class="button button-full button-assertive">Login</button></ion-col>
+          </ion-row>
+        </ion-grid>
+        <div class="login-buttons" ng-show="platformReady">
+          <div class="col-100 forgot-pw">
+            <span>Forgot Password?</span>
+            <span class="strong">Please Contact Support</span>
+            <span class="strong">1-868-290-1243</span>
+            <span class="strong">Version: %%%BUILDVERSION%%%</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

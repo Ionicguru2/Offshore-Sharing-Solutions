@@ -1,0 +1,64 @@
+<ion-modal-view id="pendingoffer-modal">
+  <ion-header-bar class="modal-header">
+    <button class="modal-back" ng-click="modalCommand('hide')"><i class="ion-ios-arrow-back back"></i></button>
+    <h1 class="title">Pending Offer</h1>
+  </ion-header-bar>
+  <ion-content>
+    <div class="wrapper">
+      <div class="list card">
+
+        <div class="actions" ng-if="isOwner">
+
+          <button class="offer-message" ng-click="goToConvo(alert.offer.transaction.id)">
+            <div>
+            <img class="icon" src="images/svg/messages.svg"/>
+            {{opponent_user.identifier}}
+            </div>
+          </button>
+
+          <span class="offer-desc">{{alert.message}}</span>
+          <button class="approve" ng-click="approveOffer('seller')" ng-if="offer.enable_owner" >Accept</button>
+          <button class="deny" ng-click="denyOffer()" ng-if="offer.enable_owner" >Decline</button>
+        </div>
+
+        <div class="actions" ng-if="!isOwner">
+
+          <button class="offer-message" ng-click="goToConvo(alert.offer.transaction.id)">
+            <div>
+            <img class="icon" src="images/svg/messages.svg"/>
+            {{opponent_user.identifier}}
+            </div>
+          </button>
+
+          <span class="offer-desc">{{alert.message}}</span>
+          <button class="approve" ng-click="approveOffer('buyer')" ng-if="offer.accepted && offer.confirmed == null" >Confirm</button>
+          <button class="deny" ng-click="denyOffer()" ng-if="offer.accepted &&  offer.confirmed == null" >Cancel</button>
+        </div>
+
+        <a class="item item-avatar market-item"
+             ng-class="{'sell-item': product.type == 'sell', 'buy-item': product.type == 'buy'}"
+             ng-click="goToItemDescription(product)">
+
+          <img class="icon" ng-src="{{product.BUY_image}}" ng-if="product.type == 'buy'"/>
+          <img class="icon" ng-src="{{product.SELL_image}}" ng-if="product.type == 'sell'"/>
+
+          <span class="title">{{product.title | limitToWords:true:40}}</span>
+          <div class="subinfo">
+            <span class="transaction-id">{{product.user.identifier}}</span>
+            <span class="region">{{alert.created_at}}</span>
+          </div>
+          <span class="desc">{{product.details | limitToWords:true:60}}</span>
+          <div class="flags">
+            <div class="onsale" ng-if="product.flags.onsale">Onsale</div>
+            <div class="offerspending" ng-if="product.flags.offerspending">Offerspending</div>
+            <div class="finalday" ng-if="product.flags.price_negotiable">Price Negotiable</div>
+            <div class="urgent" ng-if="product.flags.expiring_soon">Expiring Soon</div>
+            <div class="discounted" ng-if="product.flags.discounted">Discounted</div>
+          </div>
+          <span class="price">${{product.price | number}}</span>
+        </a>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-modal-view>

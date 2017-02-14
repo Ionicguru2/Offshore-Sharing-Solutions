@@ -1,0 +1,182 @@
+#search {
+  .tab-nav {
+    text-align: center;
+    background: $blue2;
+    height: 50px;
+    border-top: 3px solid $blue1;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    a.tab-item {
+      display: inline-block;
+      height: 100%;
+      width: 50%;
+      max-width: initial;
+      border: 0;
+      padding: 0;
+      background: $blue2;
+      color: #ddd;
+      text-transform: uppercase;
+      font-size: 11px;
+      opacity: 1;
+      -moz-box-shadow:    inset 0 0 10px rgba(0,0,0,0.5);
+      -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+      box-shadow:         inset 0 0 10px rgba(0,0,0,0.5);
+      &.tab-item-active {
+        background: $blue1;
+        color: white;
+        font-weight: bold;
+      }
+    }
+  }
+  #activity-tab, #market-tab, #message-tab {
+    top: 50px;
+  }
+  #market-tab, #activity-tab {
+    div.list {
+      margin: 0;
+      a.message-item {
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        &.buy {
+          border-left: 3px solid $green1;
+        }
+        &.sell {
+          border-left: 3px solid $red2;
+        }
+        span.title {
+          display: block;
+          overflow: hidden;
+          width: 90%;
+          padding: 0;
+          text-align: left;
+          font-size: 14px;
+          color: $blue2;
+          font-weight: bold;
+        }
+        span.desc {
+          display: block;
+          width: 90%;
+          padding: 0;
+          text-align: left;
+          font-size: 14px;
+          color: rgba(0,0,0,0.75);
+          font-size: 12px;
+          margin-bottom: 3px;
+          white-space: normal;
+        }
+        span.price {
+          font-size: 14px;
+          color: rgba(0,0,0,0.5);
+        }
+        div.flags {
+          display: block;
+          margin-bottom: 3px;
+          & > div {
+            font-size: 9px;
+            display: table-cell;
+            padding: 0 6px;
+            color: white;
+          }
+          .onsale {
+            background: $blue3;
+          }
+          .offerspending {
+            background: $red2;
+          }
+          .finalday {
+            background: $blue1;
+          }
+          .urgent {
+            background: $blue3;
+          }
+          .discounted {
+            background: $green1;
+          }
+        }
+        img.icon {
+          @extend %centerY;
+          position: absolute;
+          left: 20px;
+          height: 35px;
+        }
+        i.chevron {
+          @extend %centerY;
+          position: absolute;
+          right: 15px;
+          height: 24px;
+          font-size: 24px;
+          color: $green1;
+        }
+      }
+    }
+  }
+  #activity-tab {
+    div.list {
+      a.message-item {
+        border-left: 3px solid $green1;
+      }
+    }
+    div.flags {
+      .ongoing {
+        background: $red2;
+      }
+      .upcoming {
+        background: $blue3;
+      }
+    }
+  }
+  #message-tab {
+    div.list {
+      margin: 0;
+      a.message-item {
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-bottom: 1px solid #ddd;
+        span.title {
+          display: block;
+          width: 90%;
+          padding: 0;
+          text-align: left;
+          font-size: 14px;
+          color: $blue2;
+          font-weight: bold;
+          overflow: hidden;
+        }
+        span.desc {
+          display: block;
+          width: 90%;
+          padding: 0;
+          text-align: left;
+          font-size: 14px;
+          color: rgba(0,0,0,0.75);
+          font-size: 12px;
+          margin-bottom: 3px;
+          white-space: normal;
+        }
+        i.chevron {
+          @extend %centerY;
+          position: absolute;
+          right: 15px;
+          height: 24px;
+          font-size: 24px;
+          color: $green1;
+        }
+      }
+    }
+  }
+  div.subtitle {
+    text-align: center;
+    text-transform: uppercase;
+    color: $blue2;
+    height: 35px;
+    font-size: 11px;
+    span {
+      @extend %centerY;
+    }
+  }
+}

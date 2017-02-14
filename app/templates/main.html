@@ -1,0 +1,30 @@
+<ion-header-bar id="header" align-title="left" class="bar-positive" align-title="left" ng-show="showHeader">
+  <button id="go-back" ng-show="showBackBtn()" ng-click="goBack()"><i class="ion-ios-arrow-back back"></i></button>
+  <img class="logo" ng-src="{{currentIcon.src}}" ng-hide="currentIcon.hidden == true || navIcons.allHidden == true" />
+  <div id="nav-title" ng-hide="titleHidden">{{navTitle}}</div>
+
+  <!-- <i class="ion-ios-search search" ng-hide="searchHidden" ng-click="modalCommand('show')"></i> -->
+  <i class="ion-ios-search search" ng-hide="true" ng-click="modalCommand('show')"></i>
+
+</ion-header-bar>
+
+<ion-nav-view name="viewContent" animation="slide-left-right"></ion-nav-view>
+
+<!-- Footer -->
+<ion-footer-bar id="footer" ng-show="showFooter()">
+  <button ng-click="homeButton()" ng-class="{'active': isActiveTab('app.home') || isActiveTab('app.category') || isActiveTab('app.market') || isActiveTab('app.itemDescription')}">
+    <i class="ion-ios-home"></i>
+  </button>
+  <button ng-click="messageButton()" ng-class="{'active': isActiveTab('app.messages')}">
+    <img src="images/svg/messages.svg" />
+  </button>
+  <button ng-click="postButton()" class="post-item" ng-class="{'active': isActiveTab('app.post')}">
+    <img src="images/svg/new_post.svg" />
+  </button>
+  <button ng-click="ongoingButton()" ng-class="{'active': isActiveTab('app.ongoing')}">
+    <img src="images/svg/ongoing.svg" />
+  </button>
+  <button ng-click="settingsButton()" ng-class="{'active': isActiveTab('app.settings')}">
+    <img src="images/svg/settings.svg" />
+  </button>
+</ion-footer-bar>

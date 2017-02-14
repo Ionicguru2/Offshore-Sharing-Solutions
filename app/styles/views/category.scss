@@ -1,0 +1,40 @@
+#category {
+  div.list {
+    margin: 0;
+    button.subcategory {
+      display: block;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      span {
+        display: inline-block;
+        width: 100%;
+        padding: 0;
+        text-align: left;
+        font-weight: bold;
+        font-size: 14px;
+        color: $blue2;
+      }
+      i {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        height: 24px;
+        font-size: 24px;
+        color: $green1;
+      }
+    }
+  }
+  div.subtitle {
+    text-align: center;
+    text-transform: uppercase;
+    color: $blue2;
+    height: 35px;
+    font-size: 11px;
+    background-color: #eee;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    span {
+      @extend %centerY;
+    }
+  }
+}

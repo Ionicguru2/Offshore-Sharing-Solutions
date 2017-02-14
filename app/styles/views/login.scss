@@ -1,0 +1,95 @@
+#login {
+  form.inner {
+    @extend %centerAll;
+    display: block;
+    width: 100%;
+    padding-top: 50px;
+  }
+  div.wrapper {
+    width: 100vw;
+    height: 100vh;
+    background-color: $blue2;
+  }
+  ion-grid.login-inputs, div.login-buttons {
+    padding: 0 15vw;
+    @extend %centerX;
+  }
+  div.login-buttons {
+    width: 100%;
+    .forgot-pw{
+      font-size: 0.8rem;
+      color: white;
+      text-align: center;
+      span {
+        display: block;
+        &:not(.strong) {
+          margin: 10px 0;
+        }
+        &.strong {
+          font-weight: bold;
+        }
+      }
+    }
+    span.faded {
+      color: rgba(255,255,255,0.6);
+    }
+  }
+  ion-grid.login-inputs {
+    width: 100%;
+    ion-col[width-90] {
+      position: relative;
+    }
+    button {
+      background: $green1;
+      border-radius: 3px;
+    }
+    #email, #password {
+      background: transparent;
+      display: block;
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      outline: none;
+      padding: 10px;
+      box-sizing: border-box;
+      transition: 0.25s ease all;
+      -webkit-transition: 0.25s ease all;
+      &.api-error {
+        border: 1px solid $red1;
+      }
+      i {
+        display: inline-block;
+        color: white;
+        font-size: 125%;
+      }
+      input {
+        display: inline-block;
+        width: 90%;
+        padding: 4px 5px 5px 15px;
+        border: none;
+        box-shadow: none;
+        background: transparent;
+        color: white;
+      }
+      span.error {
+        transition: 0.25s ease all;
+        -webkit-transition: 0.25s ease all;
+        font-size: 0.75rem;
+        position: absolute;
+        bottom: -15px;
+        right: -10px;
+        color: $red1;
+      }
+
+      ion-ios-email-outline { width: 10px; }
+      ion-ios-password-outline { width: 10px; }
+    }
+    #email {
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+    }
+    #password {
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+/************************************
+ *
+ *  Main Styles to compile. Here only @imports!
+ *
+ ************************************/
+
+@import "_variables";
+@import "_fonts";
+@import '_animations';
+
+/**
+ * LAYOUT
+ */
+
+@import "layout/layout";
+
+
+/**
+ * MENU
+ */
+
+@import "menu/menu";
+
+/**
+ * VIEWS
+ */
+@import "views/login";
+@import "views/home";
+@import "views/search";
+@import "views/messages";
+@import "views/convo";
+@import "views/post";
+@import "views/category";
+@import "views/market";
+@import "views/ongoing";
+@import "views/settings";
+@import "views/item-description";
+@import 'views/pending-offer';
+@import 'views/templates';
+@import '_media';

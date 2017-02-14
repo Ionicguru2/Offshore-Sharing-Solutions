@@ -1,0 +1,38 @@
+/**
+ * Define variables here
+ */
+
+$textColor: #ccc;
+$red1: #F45C45;
+$red2: #D22C2E;
+$green1: #84AE28;
+$blue1: #1A2632;
+$blue2: #2C3E4C;
+$blue2_dark: #111a21;
+$blue2_shadow: #6f7982;
+$blue2_triangle: #1e2b35;
+$blue3: #34B49D;
+$black1: #2a3138;
+$black2: #444;
+%centerX {
+  display: block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+}
+%centerY {
+  display: block;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+%centerAll {
+  display: block;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}

@@ -1,0 +1,85 @@
+<ion-nav-view name="Settings">
+
+  <ion-content id="settings">
+
+    <div class="col-100 subtitle">
+      <span>User Information</span>
+    </div>
+    <div class="list card">
+      <button class="row item">
+        <span class="col-50 left">{{currentUser.identifier}}</span><span class="col-50 right">User ID</span>
+      </button>
+
+
+      <!-- <button class="item" ng-click="resetPasswordModal()">
+        <span class="button-text">REQUEST PASSWORD CHANGE</span><i class="ion-ios-arrow-forward"></i>
+      </button> -->
+
+
+      <button class="item signout" ng-click="signout()">
+        <span class="button-text">Sign Out</span>
+      </button>
+    </div>
+
+    <div class="col-100 subtitle">
+      <span>Support</span>
+    </div>
+    <div class="list card">
+
+
+      <!-- <button class="item" ng-click="showHelpCenterModal()">
+        <span class="button-text">HELP CENTER</span><i class="ion-ios-arrow-forward"></i>
+      </button> -->
+
+
+      <button class="item" ng-click="showReportPopup()">
+        <span class="button-text">REPORT A PROBLEM</span><i class="ion-ios-arrow-forward"></i>
+      </button>
+      <!-- <button class="item">
+        <span class="button-text" style="color:gray">REPORT A PROBLEM</span><i class="ion-ios-arrow-forward" style="color:gray"></i>
+      </button> -->
+
+
+    </div>
+
+    <!-- <div class="col-100 subtitle">
+      <span>Settings</span>
+    </div>
+    <div class="list card">
+
+
+
+      <!-- <button class="item" ng-click="notificationModal()">
+        <span class="button-text">NOTIFICATIONS </span><i class="ion-ios-arrow-forward"></i>
+      </button>
+
+
+
+      <!-- <button class="item" ng-click="regionModal()">
+        <span class="button-text">REGIONS </span><i class="ion-ios-arrow-forward"></i>
+      </button>
+
+
+    </div> -->
+
+    <div class="col-100 subtitle">
+      <span>About</span>
+    </div>
+    <div class="list card">
+      <!-- <button class="item" ng-click="setModal('about')">
+        <span class="button-text">APPLICATION</span><i class="ion-ios-arrow-forward"></i>
+      </button> -->
+      <!-- <button class="item" ng-click="setModal('privacy')">
+        <span class="button-text">PRIVACY POLICY</span><i class="ion-ios-arrow-forward"></i>
+      </button> -->
+      <button class="item" ng-click="setModal('terms')">
+        <span class="button-text">TERMS AND CONDITIONS</span><i class="ion-ios-arrow-forward"></i>
+      </button>
+      <!-- <button class="item" ng-click="setModal('legal')">
+        <span class="button-text">LEGAL NOTICES</span><i class="ion-ios-arrow-forward"></i>
+      </button> -->
+    </div>
+
+  </ion-content>
+
+</ion-nav-view>

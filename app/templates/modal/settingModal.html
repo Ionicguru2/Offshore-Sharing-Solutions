@@ -1,0 +1,180 @@
+<ion-modal-view id="settingModal">
+  <ion-header-bar class="modal-header">
+    <button class="cancel-region" ng-show="slideIndex == 7" ng-click="modalCommand('hide')">Cancel</button>
+    <button class="save-region" ng-show="slideIndex == 7" ng-click="saveRegion()">Save</button>
+    <button class="modal-back" ng-show="slideIndex != 7" ng-click="goBack()">
+      <i class="ion-ios-close-empty back"></i>
+    </button>
+    <h1 class="title">{{title}}</h1>
+  </ion-header-bar>
+ 
+
+  <ion-slide-box show-pager="false" ng-init="lockSlide()" on-slide-changed="slideChanged(index)">
+    <!--reset password-->
+    <ion-slide>
+      <ion-content>
+        <div class="title-bar">
+          <span>Problems signing in?</span>
+        </div>
+        <div class="wrapper content">
+          The only way to set up your PIN again is to reset it. If you use your PIN to access games, social networking, or financial institutions, you'll need to log in from scratch in each of those places after you reset your PIN.<br>
+          <br>It's also possible that resetting your PIN could result in data loss if you have content managed by your company or organization<br>
+          <button ng-click="gotoRight()" class="button button-full">Send Code</button>
+        </div>
+      </ion-content>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-content>
+        <div class="title-bar">
+          <span>Mobile Verification</span>
+        </div>
+        <div class="wrapper content">
+          A verification code has been sent to your mobile phone. Key in your verification code to reset your password.<br>
+          <input type="text" ng-model="vCode" 
+                      ng-class="{'invalid-input': form.title.$invalid && form.$submitted}" placeholder="Verification Code" required name="vCode" />
+          <div class="vCode"><span ng-click="resendCode()">Resend code</span></div>
+          <button ng-click="verification()" class="button button-full">Confirm</button>
+        </div>
+      </ion-content>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-content>
+        <div class="title-bar">
+          <span>Almost there...</span>
+        </div>
+        <div class="wrapper content">
+          Please complete the following fields to reset your password.<br>
+          <input type="password" class="password" ng-model="newPassword" 
+                      ng-class="{'invalid-input': form.title.$invalid && form.$submitted}" placeholder="New Password" required name="newPassword" />
+          <input type="password" class="password" ng-model="confirmPassword" 
+                      ng-class="{'invalid-input': form.title.$invalid && form.$submitted}" placeholder="Confirm Password" required name="confirmPassword" />
+          <button ng-click="changePassword()" class="button button-full">Change password</button>
+        </div>
+      </ion-content>
+    </ion-slide>
+
+    <!--report-->
+    <ion-slide>
+      <ion-content>
+        <div class="title-bar">
+          <span>Spam or Abuse?</span>
+        </div>
+        <div class="wrapper content">
+          When you report something, your information isn't shared with the person whose post you're reporting.<br>
+          <textarea ng-model="reportData.message" name="spam"
+                    ng-class="{'invalid-input': form.certificationDetail.$invalid && form.$submitted}" required></textarea>
+          <button ng-click="reportToServer('spam')" class="button button-full">Send</button>
+        </div>
+      </ion-content>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-content>
+        <div class="title-bar">
+          <span>Something isn't Working?</span>
+        </div>
+        <div class="wrapper content">
+          Briefly explain what happened.<br>
+          <textarea ng-model="reportData.message" name="something"
+                    ng-class="{'invalid-input': form.certificationDetail.$invalid && form.$submitted}" required></textarea>
+          <button ng-click="reportToServer('something')" class="button button-full">Send</button>
+        </div>
+      </ion-content>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-content>
+        <div class="title-bar">
+          <span>General Feedback?</span>
+        </div>
+        <div class="wrapper content">
+          Briefly explain what you love, or what could improve.<br>
+          <textarea ng-model="reportData.message" name="general"
+                    ng-class="{'invalid-input': form.certificationDetail.$invalid && form.$submitted}" required></textarea>
+          <button ng-click="reportToServer('general')" class="button button-full">Send</button>
+        </div>
+      </ion-content>
+    </ion-slide>
+
+    <!--notification-->
+    <ion-slide>
+      <ion-content>
+        <div id="notification">
+          <div class="col-100 subtitle">
+            <span>WE SHOULD NOTIFY YOU WHEN SOMEONE</span>
+          </div>
+          <div class="list card">
+
+            <button class="item" ng-repeat="notification in notifications">
+              <span><ion-toggle ng-modal="notification.allowed" ng-checked="notification.allowed" ng-click="setNotification(notification.notification_type.identifier)">{{notification.notification_type.name}}</ion-toggle></span>
+            </button>
+
+          </div>
+        </div>
+      </ion-content>
+    </ion-slide>
+
+    <!--region-->
+    <ion-slide>
+      <ion-content id="region">
+        <div class="col-100 subtitle">
+          <span>REGIONS</span>
+        </div>
+        <div class="list card">
+          <div class="regionList" ng-click="chooseRegion(region)" ng-repeat="region in regions" ng-if="$index!=0 && region.name != regions.length" >
+            <div class="regionInfo" ng-click="regionCountries(region)"><i class="ion-ios-information-outline"></i></div>
+            <ion-radio ng-model="region_id" value="{{region.id}}">{{region.name}}</ion-radio>
+          </div>
+        </div>
+      </ion-content>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-content id="country">
+        <div class="col-100 subtitle">
+          <span>{{region_name}}</span>
+        </div>
+        <div class="list card">
+          <div class="countryList" ng-repeat="country in countries" ng-if="region_id==country.region_id"  >
+            {{country.name}}
+          </div>
+        </div>
+      </ion-content>
+    </ion-slide>
+
+    <!--about-->
+    <ion-slide>
+      <ion-content id="about">
+
+        <div class="wrapper" ng-if="isAbout">
+          <div class="aboutImgContent">
+            <div class="logoContent">
+              <img class="logo" src="images/res/logo.svg" />
+            </div>
+            <div class="descriptionContent">
+              <span class="term-title">Version: {{build_version}}</span>
+              <span class="term-title">API Version: {{api_version}}</span>
+              <p>&copy;2016 Offshore Sharing</p>
+            </div>
+          </div>
+            
+
+          <div class="content about-content">
+            <span class="about-description">Design and built by<br>KPDi</span>
+            <button ng-click="rateInAppStore()" class="button button-full">Rate us in the App Store</button>
+          </div>
+          
+        </div>
+
+        <div id="other" class="wrapper content" ng-if="!isAbout">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum facilisis nisi dictum, finibus risus in, auctor nibh. Quisque sed consequat diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce et scelerisque libero. Fusce sed gravida nisi. Duis dui orci, molestie vel risus vitae, dictum fermentum purus. Mauris magna nibh, auctor vel euismod id, consectetur id elit. Ut sit amet enim quis erat auctor imperdiet vitae in nisl.</p>
+          <p>Vivamus eleifend convallis erat, id lobortis lacus convallis a. Etiam ut elit enim. Aenean quis mi et odio convallis scelerisque eu non ipsum. Praesent tortor urna, porta euismod ante vitae, cursus pharetra ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec vel nunc sed libero iaculis consectetur. Cras ultricies eros sed est scelerisque suscipit. Nam sed lobortis dui, ultricies ultricies elit. Fusce augue ipsum, rutrum eget congue a, ultrices a lorem. Ut nec risus efficitur, rhoncus leo non, ornare odio. In quis elit ex.</p>
+        </div>
+      </ion-content>
+    </ion-slide>
+
+  </ion-slide-box>
+
+</ion-modal-view>

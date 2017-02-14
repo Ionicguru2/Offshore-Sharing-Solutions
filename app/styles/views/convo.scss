@@ -1,0 +1,210 @@
+#convo {
+  div.scroll {
+    display: block;
+    width: 100%;
+    padding: 15px 20px 0;
+  }
+  div.chatlog {
+    div.chat-row {
+      display: block;
+      position: relative;
+      width: 100%;
+      div.bubble {
+        max-width: 100%;
+        min-height: 45px;
+        display: inline-block;
+        button {
+          display: block;
+          width: 100%;
+          height: 35px;
+          color: white;
+          background: $green1;
+          margin-top: 5px;
+          outline: 0;
+          border: 0;
+        }
+
+        &.file {
+
+          .row .icon { 
+
+            width: 30px; 
+
+          }
+
+          .row .title span { 
+
+            position: relative; 
+            top: 10px; 
+          }
+
+
+        }
+
+        &.left {
+          float: left;
+          padding: 15px;
+          margin: 5px;
+          border: 0;
+          color: rgba(0,0,0,0.5);
+          background: linear-gradient(#ddd, #c5c5c5);
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          border-radius: 25px;
+          box-shadow: 3px 3px 3px 0px #bdbaba;
+          &:before {
+            bottom: auto;
+            left: -10px;
+            border-width: 10px 20px 10px 0;
+            border-color: transparent #d2d2d2;
+          }
+          div.row {
+            height: 35px;
+            div[class*="col-"] {
+              height: 100%;
+            }
+          }
+          img {
+            max-width: 100%;
+          }
+          span.title {
+            @extend %centerAll;
+            padding: 0 5px;
+          }
+        }
+        &.right {
+          float: right;
+          padding: 15px;
+          margin: 5px;
+          border: 0;
+          color: #fff;
+          background: $blue2;
+          background: linear-gradient($blue2,$blue2_dark);
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          border-radius: 25px;
+          box-shadow: -1px 2px 4px 1px $blue2_shadow;
+          div.row {
+            height: 35px;
+            div[class*="col-"] {
+              height: 100%;
+            }
+          }
+          img {
+            max-width: 100%;
+          }
+          span.title {
+            @extend %centerAll;
+            padding: 0 5px;
+          }
+          &:before {
+            bottom: auto;
+            left: auto;
+            right: -10px;
+            border-width: 10px 0 10px 20px;
+            border-color: transparent $blue2_triangle;
+          }
+        }
+        &:before {
+          content: "";
+          position: absolute;
+          bottom: -20px;
+          left: 40px;
+          border-width: 20px 20px 0;
+          border-style: solid;
+          border-color: $blue2 transparent;
+          display: block;
+          width: 0;
+        }
+      }
+    }
+  }
+}
+#message-footer {
+  display: block;
+  background: $blue2;
+  width: 100%;
+  height: 50px;
+  color: $green1;
+  padding: 0 10px;
+  div[class*="col-"] {
+    height: 100%;
+  }
+  form {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    .col-15 {
+      display: block;
+      -webkit-flex: 0 0 15%;
+      -moz-flex: 0 0 15%;
+      flex: 0 0 15%;
+      height: 100%;
+    }
+    i, span, button {
+      @extend %centerAll;
+      text-align: center;
+    }
+    i {
+      font-size: 32px;
+    }
+    button {
+      background: $blue2;
+      height: 100%;
+      color: $green1;
+      padding: 0 10px;
+      box-shadow: none;
+      border: 0;
+      min-width: 50px;
+    }
+    input.message-box {
+      width: 95%;
+      height: 65%;
+      border-radius: 5px;
+      @extend %centerAll;
+      padding: 5px;
+      color: rgba(0,0,0,0.65);
+    }
+  }
+}
+#right-menu {
+  .modal-header {
+    h1.title {
+      color: $green1;
+    }
+  }
+  #attachment {
+    .list {
+      margin: 0;
+      color: rgba(0,0,0,0.65);
+      .item {
+        position: relative;
+        i.social-icon, img.icon {
+          font-size: 25px;
+          @extend %centerY;
+          position: absolute;
+          right: 15px;
+          width: 25px;
+          height: 25px;
+          color: $blue2;
+        }
+        span.title {
+          display: block;
+          font-size: 1rem;
+        }
+        span.desc {
+          display: block;
+          font-size: 0.8rem;
+        }
+        &.message-item {
+          min-height: 70px;
+        }
+      }
+    }
+  }
+}
+
+.message-view {
+  bottom: 52px;
+}
+

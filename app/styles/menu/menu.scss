@@ -1,0 +1,110 @@
+#header, #footer, #footer .tabs, .modal-header {
+  background-color: $blue2;
+  border: 0;
+  border-color: transparent;
+}
+.modal-header {
+  button.modal-exit {
+    @extend %centerY;
+    position: absolute;
+    right: 10px;
+    top: calc(50% + 2px);
+    background: transparent;
+    border: 0;
+    outline: 0;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+  }
+}
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
+  margin-top: 5px;
+}
+.has-header {
+  top: 57px;
+}
+#header, .modal-header {
+  height: 64px!important;
+  #go-back, .modal-back {
+    @extend %centerY;
+    position: absolute;
+    border: 0;
+    background: transparent;
+    outline: none;
+    i.back {
+      height: 20px;
+      font-size: 20px;
+      color: white;
+    }
+  }
+  img.logo {
+    @extend %centerAll;
+    height: 28px;
+    font-size: 28px;
+    text-align: center;
+  }
+  i.search {
+    @extend %centerY;
+    position: absolute;
+    right: 15px;
+    height: 24px;
+    font-size: 24px;
+  }
+  div#nav-title {
+    @extend %centerAll;
+    text-align: center;
+    height: 20px;
+    width: auto;
+    color: white;
+  }
+  h1.title {
+    @extend %centerAll;
+    left:50%!important;
+    text-align: center;
+    color: white;
+    font-weight: normal;
+  }
+}
+#footer {
+  padding: 0;
+  height: 50px;
+  button {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 20%;
+    background: $blue2;
+    transition: 0.25s ease all;
+    -webkit-transition: 0.25s ease all;
+    img {
+      height: 20px;
+      font-size: 20px;
+      @extend %centerAll;
+      top: 13px;
+    }
+    i {
+      color: white;
+      height: 24px;
+      font-size: 24px;
+      @extend %centerAll;
+      top: 10px;
+    }
+    &.post-item {
+      background: $green1;
+      opacity: 1;
+      img {
+        height: 36px;
+        font-size:36px;
+        position: relative;
+        top: 17px;
+      }
+    }
+    &.active {
+      background: $blue1;
+    }
+  }
+}
+ion-nav-view {
+  margin-bottom: 400px;
+}

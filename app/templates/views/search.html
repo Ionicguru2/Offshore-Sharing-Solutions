@@ -1,0 +1,77 @@
+<ion-nav-view name="Search">
+  <div id="top-arrow" ng-show="showTopArrow" ng-click="scrollTop()">
+    <i class="ion-arrow-up-c"></i>
+  </div>
+  <ion-content id="search" on-scroll="getScrollPosition()">
+    <!-- Axctivity tab -->
+    <ion-tabs class="search-tabs">
+      <ion-tab title="Activity">
+        <ion-nav-view id="activity-tab" name="search-activity">
+            <div class="list card">
+              <a class="item message-item" ng-repeat="activity in activities track by $index" ng-click="viewActivities()">
+                <span class="title">{{activity.title}}</span>
+                <span class="desc">
+                  {{activity.contents}}
+                </span>
+                <div class="flags">
+                  <div class="ongoing" ng-if="activity.flags.ongoing">ongoing</div>
+                  <div class="upcoming" ng-if="activity.flags.upcoming">upcoming</div>
+                </div>
+                <i class="ion-ios-arrow-forward chevron"></i>
+              </a>
+            </div>
+        </ion-nav-view>
+      </ion-tab>
+      <!-- Marketplace tab -->
+      <ion-tab title="Marketplace">
+        <ion-nav-view id="market-tab" name="search-market">
+            <div class="list card">
+              <a class="item message-item buy" ng-repeat="marketItem in marketItems.buyItems track by $index" ng-click="viewMarket()">
+                <span class="title">{{marketItem.title}}</span>
+                <span class="desc">
+                  {{marketItem.contents}}
+                </span>
+                <div class="flags">
+                  <div class="onsale" ng-if="marketItem.flags.onsale">onsale</div>
+                  <div class="offerspending" ng-if="marketItem.flags.offerspending">offerspending</div>
+                  <div class="finalday" ng-if="marketItem.flags.finalday">finalday</div>
+                  <div class="urgent" ng-if="marketItem.flags.urgent">urgent</div>
+                </div>
+                <span class="price">${{marketItem.price}}</span>
+                <i class="ion-ios-arrow-forward chevron"></i>
+              </a>
+              <a class="item message-item sell" ng-repeat="marketItem in marketItems.sellItems track by $index" ng-click="viewMarket()">
+                <span class="title">{{marketItem.title}}</span>
+                <span class="desc">
+                  {{marketItem.contents}}
+                </span>
+                <div class="flags">
+                  <div class="onsale" ng-if="marketItem.flags.onsale">onsale</div>
+                  <div class="offerspending" ng-if="marketItem.flags.offerspending">offerspending</div>
+                  <div class="finalday" ng-if="marketItem.flags.finalday">finalday</div>
+                  <div class="urgent" ng-if="marketItem.flags.urgent">urgent</div>
+                </div>
+                <span class="price">${{marketItem.price}}</span>
+                <i class="ion-ios-arrow-forward chevron"></i>
+              </a>
+            </div>
+        </ion-nav-view>
+      </ion-tab>
+      <!-- Message Center tab -->
+      <ion-tab title="Message Center">
+        <ion-nav-view id="message-tab" name="search-messages">
+            <div class="list card">
+              <a class="item item-avatar message-item" ng-repeat="message in messages track by $index" ng-click="viewMessages()">
+                <img class="icon" src="images/svg/messages/profile.svg" />
+                <span class="title">{{message.title}}</span>
+                <span class="desc">
+                  {{message.contents}}
+                </span>
+                <i class="ion-ios-arrow-forward chevron"></i>
+              </a>
+            </div>
+        </ion-nav-view>
+      </ion-tab>
+    </ion-tabs>
+  </ion-content>
+</ion-nav-view>

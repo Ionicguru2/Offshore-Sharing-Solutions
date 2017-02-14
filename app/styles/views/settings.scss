@@ -1,0 +1,166 @@
+#settings {
+  background: #eee;
+  div.list {
+    margin: 0;
+    &:last-child {
+      margin-bottom:0;
+    }
+    button {
+      display: block;
+      position: relative;
+      width: 100%;
+      height: 75px;
+      background: white;
+      border: 0;
+      border-bottom: 2px solid rgba(0,0,0,0.25);
+      padding: 15px;
+      text-transform: uppercase;
+      &.signout span {
+        color: $green1;
+      }
+      span {
+        display: inline-block;
+        width: 100%;
+        padding: 0;
+        text-align: left;
+        font-size: 14px;
+        color: $blue2;
+        text-transform: uppercase;
+        .item-toggle {
+          padding-left: 0px;
+          padding-right: 0px;
+          .toggle {
+            right: 0;
+          }
+        }
+        &.col-50 {
+          &.left {
+
+          }
+          &.right {
+            text-align: right;
+            color: rgba(0,0,0,0.35);
+          }
+        }
+      }
+      i {
+        position: absolute;
+        right: 15px;
+        top: 22px;
+        height: 24px;
+        font-size: 24px;
+        color: $green1;
+      }
+    }
+  }
+  div.subtitle {
+    padding: 0 15px;
+    text-align: left;
+    color: rgba(0,0,0,0.5);
+    height: 35px;
+    font-size: 12px;
+    background-color: #eee;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    span {
+      @extend %centerY;
+    }
+  }
+}
+
+#about {
+  margin-top: -3px !important;
+  .aboutImgContent{
+    background: url("../images/res/AboutUs_Header.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 60vw;
+    text-align: center;
+
+    .logoContent{
+      width: 100%;
+      height: 60%;
+
+      .logo{
+        top: 40%;
+        left: 50%;
+        display: block;
+        -webkit-transform: translateX(-50%);
+        position: relative;
+        width: 18%;
+      }
+    }
+
+    .descriptionContent{
+      color: white;
+    }
+  }
+
+  .about-content{
+    text-align: center;
+    width: 80vw;
+    .about-description{
+      position: relative;
+      font-size: 0.75rem;
+      line-height: 0.1px;
+      color: $green1;
+    }
+    button{
+      background-color: $green1;
+      color: white;
+      top: 20vh;
+      position: relative;
+      min-height: 30px;
+      height: 45px;
+      width: 80%;
+      left: 10%;
+      border-radius: 3px !important;
+    }
+  }
+
+  .term-title {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 5px 0;
+  }
+  p {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .wrapper {
+    padding: 0;
+    height: 100%;
+    form {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .scroll {
+    display: block;
+    width: 100%;
+    height: 100%;
+    .content {
+      padding: 13%;
+      display: block;
+      width: 100%;
+    }
+  }
+
+  #other{
+    padding: 15px;
+    .term-title {
+      display: block;
+      font-size: 1rem;
+      font-weight: bold;
+      text-align: center;
+      margin: 5px 0;
+    }
+    p {
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+  }
+}

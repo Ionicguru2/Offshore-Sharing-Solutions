@@ -1,0 +1,45 @@
+#home {
+  div.subtitle {
+    text-align: center;
+    text-transform: uppercase;
+    color: $blue2;
+    height: 35px;
+    font-size: 11px;
+    background-color: white;
+    span {
+      @extend %centerY;
+    }
+  }
+  div.list {
+    background-color: #ddd;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    vertical-align: middle;
+    .card {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+      -webkit-box-shadow: none;
+      border: 1px;
+      transition: 0.25s ease all;
+      -webkit-transition: 0.25s ease all;
+      &.activated {
+        opacity: 0.75;
+      }
+      &:not(:first-child) {
+        width: 50%;
+        display: inline-block;
+      }
+      img.full-image {
+        vertical-align: middle;
+        min-height: 75px;
+        display: inline-block;
+      }
+    }
+  }
+}
+ion-nav-view {
+  margin-bottom: 0px!important;
+  border-bottom: 1px solid $blue1;
+}

@@ -1,0 +1,68 @@
+<ion-nav-view name="Messages">
+  <div id="top-arrow" ng-show="showTopArrow" ng-click="scrollTop()">
+    <i class="ion-arrow-up-c"></i>
+  </div>
+  <ion-content id="messages" on-scroll="getScrollPosition()">
+
+    <ion-refresher pulling-text="Pull to refresh"
+       refreshing-text="Loading..."
+       refreshing-icon="fa fa-spinner fa-pulse"
+       pulling-icon="ion-ios7-arrow-thin-down"
+       on-refresh="doRefresh()">
+    </ion-refresher>
+
+    <!-- Messages tab -->
+    <ion-tabs class="messages-alerts">
+      <ion-tab title="Messages">
+        <ion-nav-view id="message-tab" name="marketBuy">
+            <div class="list card">
+
+              <!-- <a class="no-items-available" ng-if="doneLoading && emptyList.messages.enabled">
+                <i class="fa fa-exclamation"></i>
+                <span class="desc">No items available</span>
+              </a> -->
+
+              <a class="item item-avatar message-item" ng-class="read_class(channel.unreadMessages)" ng-repeat="channel in channels | orderObjectBy: 'timestamp':true" ng-click="viewChannel(channel)">
+                <img class="icon" src="images/svg/messages/profile.png" ng-if="channel.unreadMessages"/>
+                <img class="icon" src="images/svg/messages/profile.svg" ng-if="!channel.unreadMessages"/>
+                <span class="title">{{channel.title}}</span>
+                <span class="desc">
+                  {{channel.lastMessage}}
+                </span>
+                <span class="timestamp">{{channel.time_label}}</span>
+                <i class="ion-ios-arrow-forward chevron"></i>
+              </a>
+            </div>
+            <div class="card tooltip" ng-if="doneLoading && emptyList.messages.enabled">
+              <span class="desc" ng-bind-html="emptyList.messages.message"></span>
+              <button class="button button-full button-assertive" ng-click="emptyList.messages.buttonLink()">{{emptyList.messages.buttonText}}</button>
+            </div>
+        </ion-nav-view>
+      </ion-tab>
+      <!-- Alerts tab -->
+      <ion-tab title="Alerts">
+        <ion-nav-view id="alert-tab" name="marketSell">
+            <div class="list card">
+
+              <!-- <a class="no-items-available" ng-if="doneLoading && emptyList.alerts.enabled">
+                <i class="fa fa-exclamation"></i>
+                <span class="desc">No items available</span>
+              </a> -->
+
+              <a class="item message-item" ng-class="read_class(alert.seen)" ng-repeat="alert in alerts track by $index" ng-click="viewAlert($index)">
+                <span class="title">{{alert.message}}</span>
+                <span class="desc">{{alert.created_at}}</span>
+
+                <i class="ion-ios-arrow-forward chevron"></i>
+              </a>
+            </div>
+            <div class="card tooltip" ng-if="doneLoading && emptyList.alerts.enabled">
+              <span class="desc" ng-bind-html="emptyList.alerts.message"></span>
+              <button class="button button-full button-assertive" ng-click="emptyList.alerts.buttonLink()">{{emptyList.alerts.buttonText}}</button>
+            </div>
+        </ion-nav-view>
+      </ion-tab>
+
+    </ion-tabs>
+  </ion-content>
+</ion-nav-view>

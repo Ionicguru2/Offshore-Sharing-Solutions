@@ -1,0 +1,318 @@
+#post {
+  color: $blue1;
+  #title-bar {
+    padding: 5px 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    span.title {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+  span.desc {
+    display: block;
+    font-size: 11px;
+  }
+  form {
+    span.desc {
+      text-transform: uppercase;
+    }
+    input[type="text"], input[type="email"], input[type="password"], input[type="number"], textarea {
+      background-color: #eee;
+      display: block;
+      width: 100%;
+      color: rgba(0,0,0,0.5);
+      padding: 0 5px;
+    }
+    .category-name, .subcategory-name, .region-name, .country-name{
+      text-align: right;
+    }
+    textarea {
+      padding: 5px;
+      text-indent: -3px;
+    }
+    select {
+      width: calc(100% - 15px);
+      height: 100%;
+      border-radius: 0;
+    }
+    .buy-sell {
+      text-align: center;
+      padding: 0;
+      height: 40px;
+      .buy, .sell {
+        border: 0;
+        height: 100%;
+        background-color: #eee;
+        &.active {
+          color: white;
+        }
+      }
+      .buy {
+        border-right: 1px solid rgba(0,0,0,0.15);
+        &.active {
+          background-color: $green1;
+        }
+      }
+      .sell {
+        &.active {
+          background-color: $red1;
+        }
+      }
+    }
+    div[class*="group-"] {
+      padding: 10px 15px;
+      border-bottom: 1px solid rgba(0,0,0,0.15);
+    }
+    .invalid-input {
+      border: solid 1px red !important;
+    }
+    .invalid-text {
+      color: red;
+      font-size: 11px;
+      font-weight: normal;
+      height: 20px;
+      overflow: hidden;
+    }
+    .date-picker{
+      height: 100%;
+      padding: 5px;
+    }
+    .group-0 {
+      height: 55px !important;
+    }
+    .group-01 {
+      height: 85px !important;
+    }
+    .group-02 {
+      height: 135px !important;
+    }
+    .group-3, .group-4, .group-6, .group-7, .group-9, .group-10, .group-11 {
+      height: 40px;
+      .col-50 {
+        height: 100%;
+        font-size: 12px;
+        &.left {
+          text-align: left;
+          font-weight: bold;
+        }
+        &.right {
+          text-align: right;
+          color: rgba(0,0,0,0.5);
+          font-size: 12px;
+          i {
+            color: $green1;
+            font-size: 14px;
+          }
+        }
+      }
+      .col-40 {
+        height: 100%;
+        font-size: 12px;
+        &.left {
+          text-align: left;
+          font-weight: bold;
+        }
+        &.right {
+          text-align: right;
+          color: rgba(0,0,0,0.5);
+          font-size: 12px;
+          i {
+            color: $green1;
+            font-size: 14px;
+          }
+        }
+      }
+      .col-60 {
+        height: 100%;
+        font-size: 12px;
+        &.left {
+          text-align: left;
+          font-weight: bold;
+        }
+        &.right {
+          text-align: right;
+          color: rgba(0,0,0,0.5);
+          font-size: 12px;
+          i {
+            color: $green1;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    .group-3, .group-4 {
+      .invalid-input{
+        height: 100%;
+        padding: 5px;
+      }
+      .col-50 {
+        &.right {
+          input {
+            width: calc(100% - 20px);
+            height: 100%;
+            padding: 0;
+            margin-top: 3px;
+            float: left;
+            position: relative;
+            border: 0;
+            background-color: transparent;
+            font-size: 12px;
+            color: #1A2632;
+            font-weight: bold;
+          }
+          i {
+            position: relative;
+            background-color: white;
+          }
+        }
+      }
+      .col-40 {
+        &.right {
+          input {
+            width: calc(100% - 15px);
+            height: 100%;
+            padding: 0;
+            margin-top: 3px;
+            float: left;
+            position: relative;
+            border: 0;
+            background-color: transparent;
+            font-size: 12px;
+            color: #1A2632;
+            font-weight: bold;
+          }
+          i {
+            position: relative;
+            background-color: white;
+          }
+        }
+      }
+      .col-60 {
+        &.right {
+          input {
+            width: calc(100% - 20px);
+            height: 100%;
+            padding: 0;
+            margin-top: 3px;
+            float: left;
+            position: relative;
+            border: 0;
+            background-color: transparent;
+            font-size: 12px;
+            color: #1A2632;
+            font-weight: bold;
+          }
+          i {
+            position: relative;
+            background-color: white;
+          }
+        }
+      }
+    }
+    .group-5 {
+      height: 120px;
+    }
+    .group-5 textarea{
+      height: 100px;
+      text-indent: -3px;
+    }
+    .group-51 {
+      height: 70px;
+    }
+    .group-51 textarea{
+      height: 50px;
+      text-indent: -3px;
+    }
+    .group-8, .group-9 {
+      height: 45px;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 0;
+      .left, .right {
+        height: 100%;
+      }
+      .right {
+        text-align: right;
+        i {
+          color: $green1;
+        }
+        input {
+          height: 100%;
+          text-align: right;
+        }
+      }
+    }
+    .group-12 {
+      height: 65px;
+      background: #eee;
+      color: rgba(0,0,0,0.5);
+      div.inner {
+        @extend %centerY;
+        text-align: center;
+        .upload-checked{
+          font-size: 40px;
+          color: green;
+        }
+        i {
+          font-size:24px;
+        }
+        span {
+          display: block;
+        }
+      }
+    }
+    .group-13 {
+      height: 65px;
+      button {
+        background: $green1;
+        color: white;
+        border: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+ion-nav-view[name="Post"], ion-nav-view[name="Conversation"], ion-nav-view[name="Settings"] {
+    .menu.menu-right{
+    	width: 100vw !important;
+    }
+    .menu-content.collapsed{
+    	transform: translate3d(0px, 0px, 0px) !important;
+    }
+    .menu-content.expanded{
+      transform: translate3d(-100vw, 0px, 0px) !important;
+    }
+}
+.backdrop {
+  background-color: rgba(0,0,0,0.7);
+}
+.popup-container {
+  .popup-head h3 {
+    font-weight: bold;
+  }
+  .popup-body {
+    font-size: 13px;
+    text-align: center;
+  }
+  .popup-buttons {
+    button {
+      font-size: 12px;
+      font-weight: bold;
+      color: $blue3;
+    }
+  }
+}
+#item-description {
+  .filmstrip img{
+    height: 100%;
+    max-width: 100% !important;
+  }
+  div.purchase {
+    button {
+      background-color: $green1;
+    }
+  }
+}

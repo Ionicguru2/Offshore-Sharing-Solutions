@@ -1,0 +1,294 @@
+<ion-nav-view name="Post">
+  <ion-side-menus>
+    <ion-side-menu-content id="post" ng-class="{'expanded': rightMenuClosed(), 'collapsed': !rightMenuClosed()}">
+      <ion-content direction="y">
+        <div id="title-bar">
+          <span class="title">Listing Details</span>
+          <span class="desc">Enter your new listing details below.</span>
+        </div>
+
+        <form novalidate class="simple-form" name="form">
+
+          <!--Post Type-->
+          <div class="group-1">
+            <span class="desc">{{currentUser.identifier}}</span>
+            <div class="buy-sell row" ng-class="{'invalid-input': !currentProduct.type && form.$submitted}">
+              <input type="button" value="Buy" class="col-50 buy"
+                      ng-click="currentProduct.type = 'buy';"
+                      ng-class="{'active': currentProduct.type == 'buy'}">
+              <input type="button" value="Sell" class="col-50 sell"
+                      ng-click="currentProduct.type = 'sell';"
+                      ng-class="{'active': currentProduct.type == 'sell'}">
+            </div>
+            <div ng-show="!currentProduct.type && form.$submitted" class="invalid-text" >A Buy or Sell option is required</div>
+          </div>
+
+          <!--Post Title-->
+          <div class="group-2">
+            <input type="text" ng-model="currentProduct.title"
+                    ng-class="{'invalid-input': form.title.$invalid && form.$submitted}" placeholder="Title" required name="title"  ng-focus="focusPosition()" ng-blur="resetPosition()"/>
+            <div ng-show="form.title.$invalid && form.$submitted" class="invalid-text">Please enter a title</div>
+          </div>
+
+          <!--Post Category-->
+          <div class="row group-3" ng-class="{'group-0': form.category.$invalid && form.$submitted}">
+            <div class="col-40 left">
+              Category
+              <div ng-show="form.category.$invalid && form.$submitted" class="invalid-text">Please select a category</div>
+            </div>
+            <div class="col-60 right">
+              <div ng-class="{'invalid-input': form.category.$invalid && form.$submitted}">
+                <input type="text" ng-model="categories[currentProduct.category_id-1].name"  class="category-name"
+                    ng-click="showSelectPicker('category')" readonly  />
+                <i class="ion-ios-arrow-down"></i>
+              </div>
+
+              <input type="text" ng-model="currentProduct.category_id" required name="category" ng-show="false"/>
+            </div>
+          </div>
+
+          <!--Post Subcategory-->
+          <div class="row group-4" ng-class="{'group-0': (!currentProduct.category_id || isInvalidCategoryID) && form.$submitted}">
+            <div class="col-40 left">
+              Sub Category
+              <div ng-show="(!currentProduct.category_id || isInvalidSubCategoryID) && form.$submitted" class="invalid-text">Please select a sub category</div>
+            </div>
+            <div class="col-60 right">
+              <div ng-class="{'invalid-input': form.category.$invalid && form.$submitted}">
+                <input type="text" ng-model="allcategories[currentProduct.sub_category_id-1].name"  class="subcategory-name"
+                    ng-click="showSelectPicker('subcategory')" readonly ng-disabled="!hasSubCategory" />
+                <i class="ion-ios-arrow-down"></i>
+              </div>
+              <input type="text" ng-model="currentProduct.sub_category_id" name="subcategory" ng-show="false"/>
+            </div>
+          </div>
+
+          <!--Post Certification Detail-->
+          <div class="group-51" ng-class="{'group-01': form.certificationDetail.$invalid && form.$submitted}">
+            <textarea ng-model="currentProduct.sku" placeholder="Certification Details"
+                      ng-class="{'invalid-input': form.certificationDetail.$invalid && form.$submitted}"
+                      name="certificationDetail" required  ng-focus="focusPosition()" ng-blur="resetPosition()"></textarea>
+            <div ng-show="form.certificationDetail.$invalid && form.$submitted" class="invalid-text">Please enter certification details</div>
+          </div>
+
+          <!--Post Item Detail-->
+          <div class="group-5" ng-class="{'group-02': form.itemDetail.$invalid && form.$submitted}">
+            <textarea ng-model="currentProduct.details" placeholder="Item Details"
+                      ng-class="{'invalid-input': form.itemDetail.$invalid && form.$submitted}"
+                      name="itemDetail" required ng-trim="false"  ng-focus="focusPosition()" ng-blur="resetPosition()"></textarea>
+            <div ng-show="form.itemDetail.$invalid && form.$submitted" class="invalid-text">Please enter item details</div>
+          </div>
+
+          <!--Post Date from-->
+          <div class="row group-6" ng-class="{'group-0': currentProduct.available_from == null && form.$submitted}">
+            <div class="col-50 left">
+              Available From
+              <div ng-show="currentProduct.available_from == null && form.$submitted" class="invalid-text">Please enter a date.</div>
+            </div>
+            <div class="col-50 right" ng-click="showDatePicker('from')" ng-class="{'invalid-input': currentProduct.available_from == null && form.$submitted}">
+              <div ng-class="{'date-picker': currentProduct.available_from == null && form.$submitted}">
+                {{currentProduct.available_from || "DD/MM/YYYY"}} <i class="ion-ios-arrow-down"></i>
+              </div>
+            </div>
+          </div>
+
+          <!--Post Date to-->
+          <div class="row group-7" ng-class="{'group-0': currentProduct.available_to == null && form.$submitted}">
+            <div class="col-50 left">
+              Available To
+              <div ng-show="currentProduct.available_to == null && form.$submitted" class="invalid-text">Please enter a date.</div>
+            </div>
+            <div class="col-50 right" ng-click="showDatePicker('to')" ng-class="{'invalid-input': currentProduct.available_to == null && form.$submitted}">
+              <div ng-class="{'date-picker': currentProduct.available_to == null && form.$submitted}">
+                {{currentProduct.available_to || "DD/MM/YYYY"}} <i class="ion-ios-arrow-down"></i>
+              </div>
+            </div>
+          </div>
+
+          <!--Post Total Days-->
+          <div class="group-9 row" ng-class="{'group-0': form.days.$invalid && form.$submitted}" >
+            <div class="col-50 left">
+              Total Days
+              <div ng-show="form.days.$invalid && form.$submitted" class="invalid-text">Please enter total days.</div>
+            </div>
+            <div class="col-50 right">
+              <input type="number" ng-model="currentProduct.days" disabled ng-class="{'invalid-input': form.days.$invalid && form.$submitted}" required name="days" />
+            </div>
+          </div>
+
+          <!--Post Quantity-->
+          <div class="group-9 row" ng-class="{'group-0': form.quantity.$invalid && form.$submitted}" ng-if="currentProduct.category_id==3">
+            <div class="col-50 left">
+              Quantity
+              <div ng-show="form.quantity.$invalid && form.$submitted" class="invalid-text">Number is invalid.</div>
+            </div>
+            <div class="col-50 right">
+              <input type="number" pattern="[0-9]*" min="1" ng-model="currentProduct.quantity" ng-class="{'invalid-input': form.quantity.$invalid && form.$submitted}" required name="quantity" />
+            </div>
+          </div>
+
+          <!--Post Number of Seats-->
+          <div class="group-9 row" ng-class="{'group-0': form.seats.$invalid && form.$submitted}" ng-if="currentProduct.sub_category_id==15 || currentProduct.category_id==5">
+            <div class="col-50 left">
+              Number of Seats
+              <div ng-show="form.seats.$invalid && form.$submitted" class="invalid-text">Number is invalid. (max: 999)</div>
+            </div>
+            <div class="col-50 right">
+              <input type="number" pattern="[0-9]*" min="1" max="999" ng-model="currentProduct.seats" ng-class="{'invalid-input': form.seats.$invalid && form.$submitted}" required name="seats" />
+            </div>
+          </div>
+
+          <!--Post Total Price-->
+          <div class="group-8 row" ng-class="{'group-0': (form.price.$invalid && form.$submitted) || currentProduct.price==0}">
+            <div class="col-50 left">
+              Total Price
+              <div ng-show="form.price.$invalid && form.$submitted" class="invalid-text">Number is invalid.</div>
+            </div>
+            <div class="col-50 right">
+              <input type="number" pattern="[0-9]*" min="1" ng-model="currentProduct.price" placeholder="USD" ng-class="{'invalid-input': form.price.$invalid && form.$submitted}" required name="price" />
+            </div>
+          </div>
+
+          <!--Post Region-->
+          <div class="group-3 row" ng-class="{'group-0': form.region.$invalid && form.$submitted}">
+            <div class="col-50 left">
+              Region
+              <div ng-show="form.region.$invalid && form.$submitted" class="invalid-text">Please enter a region.</div>
+            </div>
+            <div class="col-50 right">
+              <div ng-class="{'invalid-input': form.region.$invalid && form.$submitted}">
+                <input type="text" ng-model="regionName" class="region-name"
+                    ng-click="showSelectPicker('region')" readonly />
+                <i class="ion-ios-arrow-down"></i>
+              </div>
+              <input type="text" ng-model="currentProduct.region_id" required name="region" ng-show="false"/>
+            </div>
+          </div>
+
+          <!--Post Country-->
+          <div class="group-3 row" ng-class="{'group-0': form.country.$invalid && form.$submitted}">
+            <div class="col-50 left">
+              Country
+              <div ng-show="form.country.$invalid && form.$submitted" class="invalid-text">Please enter a country.</div>
+            </div>
+            <div class="col-50 right">
+              <div ng-class="{'invalid-input': form.country.$invalid && form.$submitted}">
+                <input type="text" ng-model="countryName" class="country-name"
+                    ng-click="showSelectPicker('country')" readonly />
+                <i class="ion-ios-arrow-down"></i>
+              </div>
+              <input type="text" ng-model="currentProduct.country_id" required name="country" ng-show="false"/>
+            </div>
+          </div>
+
+          <!--Post Create Button-->
+          <div class="group-12">
+            <div class="inner" ng-click="uploadImages()">
+
+              <i class="icon ion-ios-checkmark-outline upload-checked" ng-if="checkUploadedImage()"></i>
+
+              <i class="ion-camera" ng-if="!checkUploadedImage()"></i>
+
+              <span ng-if="!checkUploadedImage()">Insert a photo</span>
+            </div>
+
+          </div>
+          <div class="group-13">
+            <button ng-click="openRight(form)"><span>Create New</span></button>
+          </div>
+        </form>
+      </ion-content>
+    </ion-side-menu-content>
+
+
+
+    <!-- Right menu -->
+    <ion-side-menu side="right">
+      <ion-content id="item-description">
+
+        <!--Post Image-->
+        <div id="listing-hero">
+          <img ng-src="{{imgPic}}" id="preview"/>
+        </div>
+
+        <div id="listing-details">
+
+          <!--Post Title-->
+          <div class="title">
+            <span>{{currentProduct.title}}</span>
+          </div>
+
+          <!--Post Price & ID-->
+          <div class="subtitle row">
+            <div class="left col-50">
+              <span>${{currentProduct.price | number | limitToWords:true:10}} USD</span>
+            </div>
+            <div class="right col-50">
+              <span>{{currentProduct.id}}</span>
+            </div>
+          </div>
+
+
+          <div class="purchase">
+            <button ng-click="modalCommand('show')">Create Listing</button>
+          </div>
+
+
+          <div class="details">
+            <div class="top row">
+              <div class="left col-50">Quantity</div>
+              <div class="right col-50">Available</div>
+            </div>
+            <div class="bottom row">
+              <div class="left col-50">{{currentProduct.quantity | number | limitToWords:true:10}}</div>
+              <div class="right col-50">{{currentProduct.available_from}}</div>
+            </div>
+
+            <div class="top row">
+              <div class="left black1 col-50">Number of Seats</div>
+              <div class="right black2 col-50">Total Days</div>
+            </div>
+            <div class="bottom row">
+              <div class="left col-50">{{currentProduct.seats | number | limitToWords:true:10}}</div>
+              <div class="right col-50">{{currentProduct.days}}</div>
+            </div>
+          </div>
+        </div>
+        <ion-scroll class="filmstrip" direction="x" scrollbar-x="true" ng-if="filmstrip_images.length > 0">
+          <div class="inner row" scroller-resize>
+            <img ng-repeat="imageURI in filmstrip_images" ng-src="{{imageURI}}" />
+          </div>
+        </ion-scroll>
+        <div id="listing-overview">
+          <span class="title">Certification</span>
+          <div class="desc">
+            <pre>{{currentProduct.sku}}</pre>
+          </div>
+
+          <span class="title">Item Overview</span>
+          <div class="desc">
+            <pre>{{currentProduct.details}}</pre>
+          </div>
+        </div>
+
+        <div id="listing-location">
+          <div class="country">
+            <span class="title">Location</span>
+            <div class="desc">
+              <pre>{{countries[currentProduct.country_id-1].name}}</pre>
+            </div>
+          </div>
+
+          <div class="region">
+            <span class="title">Region</span>
+            <div class="desc">
+              <pre>{{regions[currentProduct.region_id].name}}</pre>
+            </div>
+          </div>
+        </div>
+
+      </ion-content>
+    </ion-side-menu>
+
+  </ion-side-menus>
+</ion-nav-view>

@@ -1,0 +1,78 @@
+<ion-nav-view name="Ongoing">
+  <div id="top-arrow" ng-show="showTopArrow" ng-click="scrollTop()">
+    <i class="ion-arrow-up-c"></i>
+  </div>
+  <ion-content id="ongoing" on-scroll="getScrollPosition()">
+
+    <ion-refresher pulling-text="Pull to refresh"
+       refreshing-text="Loading..."
+       refreshing-icon="fa fa-spinner fa-pulse"
+       pulling-icon="ion-ios7-arrow-thin-down"
+       on-refresh="doRefresh()">
+    </ion-refresher>
+
+    <!-- Ongoing tab -->
+    <ion-tabs class="ongoing-tabs">
+      <ion-tab title="Ongoing">
+        <ion-nav-view id="ongoing-tab" name="ongoingList">
+            <div class="list card">
+
+
+              <!-- <a class="no-items-available" ng-if="doneLoading && emptyList.ongoing.enabled">
+                <i class="fa fa-exclamation"></i>
+                <span class="desc">No items available</span>
+              </a> -->
+
+              <a class="item message-item" ng-repeat="transaction in transactions.ongoing track by $index" ng-click="viewOngoing(transaction.id)">
+                <span class="title">{{transaction.product.title | limitToWords:true:38 }}</span>
+                <span class="desc">{{transaction.product.details | limitToWords:true:100 }}</span>
+                <div class="subinfo">
+                  <span class="category">{{transaction.product.category.name | limitToWords:true:20}}</span>
+                  <span class="user">{{transaction.product.user.identifier | limitToWords:true:20}}</span>
+                  <span class="region">{{transaction.product.country.name | limitToWords:true:20}}</span>
+                  <span class="price">${{transaction.product.price | limitToWords:true:10}}</span>
+                </div>
+                <div class="actions">
+                  <button class="started">Started {{transaction.startDate}}</button><button class="ended">Ending {{transaction.endDate}}</button>
+                </div>
+              </a>
+            </div>
+            <div class="card tooltip" ng-if="doneLoading && emptyList.ongoing.enabled">
+              <span class="desc" ng-bind-html="emptyList.ongoing.message"></span>
+              <button class="button button-full button-assertive" ng-click="emptyList.ongoing.buttonLink()">{{emptyList.ongoing.buttonText}}</button>
+            </div>
+        </ion-nav-view>
+      </ion-tab>
+      <!-- Upcoming tab -->
+      <ion-tab title="Upcoming">
+        <ion-nav-view id="upcoming-tab" name="upcomingList">
+            <div class="list card">
+
+              <!-- <a class="no-items-available" ng-if="doneLoading && emptyList.upcoming.enabled">
+                <i class="fa fa-exclamation"></i>
+                <span class="desc">No items available</span>
+              </a> -->
+
+              <a class="item message-item" ng-repeat="transaction in transactions.upcoming track by $index" ng-click="viewUpcoming(transaction.product_id)">
+                <span class="title">{{transaction.product.title | limitToWords:true:38 }}</span>
+                <span class="desc">{{transaction.product.details | limitToWords:true:100 }}</span>
+                <div class="subinfo">
+                  <span class="category">{{transaction.product.category.name | limitToWords:true:20}}</span>
+                  <span class="user">{{transaction.product.user.identifier | limitToWords:true:20}}</span>
+                  <span class="region">{{transaction.product.country.name | limitToWords:true:20}}</span>
+                  <span class="price">${{transaction.product.price | limitToWords:true:10}}</span>
+                </div>
+                <div class="actions">
+                  <button class="started">Starting {{transaction.startDate}}</button><button class="ended">Ending {{transaction.endDate}}</button>
+                </div>
+              </a>
+            </div>
+            <div class="card tooltip" ng-if="doneLoading && emptyList.upcoming.enabled">
+              <span class="desc" ng-bind-html="emptyList.upcoming.message"></span>
+              <button class="button button-full button-assertive" ng-click="emptyList.upcoming.buttonLink()">{{emptyList.upcoming.buttonText}}</button>
+            </div>
+        </ion-nav-view>
+      </ion-tab>
+    </ion-tabs>
+  </ion-content>
+</ion-nav-view>

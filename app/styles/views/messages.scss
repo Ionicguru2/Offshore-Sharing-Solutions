@@ -1,0 +1,163 @@
+#top-arrow {
+  position: absolute;
+  bottom: 65px;
+  left: 13px;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(44, 62, 76, 0.75);
+  border-radius: 100%;
+  border: 1px solid rgba(0,0,0,0.15);
+  z-index: 999;
+  cursor: pointer;
+  i {
+    width: 32px;
+    height: 32px;
+    font-size: 32px;
+    @extend %centerAll;
+    text-align: center;
+    color: white;
+  }
+}
+#messages {
+  .tab-nav {
+    text-align: center;
+    background: $blue2;
+    height: 50px;
+    border-top: 3px solid $blue1;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    a.tab-item {
+      display: inline-block;
+      height: 100%;
+      width: 50%;
+      max-width: initial;
+      border: 0;
+      padding: 0;
+      background: $blue2;
+      color: #ddd;
+      text-transform: uppercase;
+      font-size: 11px;
+      opacity: 1;
+      -moz-box-shadow:    inset 0 0 10px rgba(0,0,0,0.5);
+      -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+      box-shadow:         inset 0 0 10px rgba(0,0,0,0.5);
+      &.tab-item-active {
+        background: $blue1;
+        color: white;
+        font-weight: bold;
+      }
+    }
+  }
+  #message-tab, #alert-tab {
+    top: 50px;
+  }
+  #alert-tab {
+    .item {
+
+      position: relative;
+
+      .title { }
+      .desc { }
+      .subinfo {
+
+        font-size: 10px;
+
+        span {
+
+          display: inline-block;
+          border-left: 1px solid #626e79;
+          border-right: 1px solid #6d767f;
+          line-height: 12px;
+          text-align: left;
+          padding: 0px 10px;
+        }
+
+        .category { color: #404f5c; padding-left: 0px; border-left: 0px; }
+        .user { color: #49bba6; }
+        .region { color: #404f5c; }
+        .price { color: #f77f70; }
+
+      }
+
+      .actions {
+
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+
+        button { color: white; font-size: 13px; text-align: center; width: 25%; padding: 10px; }
+
+        .user { background-color: #314959; border: 1px solid #142f41; color: white; width: 33%; }
+        .approve { background-color: #82ae26; border: 1px solid #5e813d; font-size: 12px;}
+        .deny { background-color: #d22d2d; border: 1px solid #cc1212; font-size: 12px; }
+        .waiting { background-color: #b2b2b2; width: 50%; border: 1px solid #c2bfbd; }
+      }
+
+    }
+  }
+  div.list {
+    margin: 0;
+    a.message-item {
+      display: inline-block;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-bottom: 1px solid #ddd;
+      span.title {
+        display: block;
+        width: 90%;
+        padding: 0;
+        text-align: left;
+        font-size: 14px;
+        color: gray;
+        font-weight: bold;
+        overflow: hidden;
+      }
+      &.unread {
+        font-weight: bold;
+
+        span.title {
+
+          color: $green1;
+
+        }
+      }
+      span.desc {
+        display: block;
+        width: 90%;
+        padding: 0;
+        text-align: left;
+        font-size: 14px;
+        color: rgba(0,0,0,0.75);
+        font-size: 12px;
+        white-space: normal;
+      }
+      span.timestamp {
+        font-size: 10px;
+        font-style: italic;
+        position: absolute;
+        bottom: 3px;
+        right: 7px;
+      }
+      i.chevron {
+        @extend %centerY;
+        position: absolute;
+        right: 15px;
+        height: 24px;
+        font-size: 24px;
+        color: $green1;
+      }
+    }
+  }
+  div.subtitle {
+    text-align: center;
+    text-transform: uppercase;
+    color: $blue2;
+    height: 35px;
+    font-size: 11px;
+    span {
+      @extend %centerY;
+    }
+  }
+}

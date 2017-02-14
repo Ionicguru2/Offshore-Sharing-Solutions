@@ -1,0 +1,13 @@
+<ion-nav-view name="Category">
+  <ion-content id="category">
+    <div class="col-100 subtitle">
+      <span>Please select a Sub Category</span>
+    </div>
+    <div class="list card">
+      <button ng-repeat="category in categories track by $index" class="item subcategory" ng-click="goToMarket(category.id)" ng-if="category.parent_id == parent_id">
+        <span class="button-text">{{category.name}}</span><i class="ion-ios-arrow-forward"></i>
+      </button>
+    </div>
+    <br />
+  </ion-content>
+</ion-nav-view>

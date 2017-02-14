@@ -1,0 +1,17 @@
+<ion-nav-view name="Home">
+  <ion-content id="home">
+    <div class="wrapper">
+      <!-- <div class="subtitle menu-drop" ng-if="!subnavHidden" ng-hide="subnavHidden"> -->
+      <div class="subtitle menu-drop">
+        <span>Please select a Category</span>
+      </div>
+      <div class="list" id="categoryList">
+        <button ng-repeat="category in categories" class="card item" ng-click="goToCategory(category)">
+          <div class="ink dark-bg">
+              <img class="full-image" ng-src="{{category.LISTING_image}}">
+          </div>
+        </button>
+      </div>
+    </div>
+  </ion-content>
+</ion-nav-view>

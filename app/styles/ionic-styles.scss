@@ -1,0 +1,19 @@
+/**
+ * Override Ionic variables here
+ *
+ * e.g. $positive:  #387ef5 !default;
+ */
+
+// Include all of Ionic for compilation
+@import 'bower_components/ionic/scss/ionic';
+.click-block-hide {
+  -webkit-transform: translate3d(-9999px, 0, 0)
+}
+.bar.bar-positive {
+  background: none;
+}
+ion-content#home {
+  background-color: #2C3E4C;
+}
+
+.platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) { padding-top: 15px !important; }

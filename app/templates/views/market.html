@@ -1,0 +1,92 @@
+<ion-nav-view name="Marketplace">
+  <div id="top-arrow" ng-show="showTopArrow" ng-click="scrollTop()">
+    <i class="ion-arrow-up-c"></i>
+  </div>
+  <ion-content id="marketplace" on-scroll="getScrollPosition()">
+
+
+    <ion-refresher pulling-text="Pull to refresh"
+       refreshing-text="Loading..."
+       refreshing-icon="fa fa-spinner fa-pulse"
+       pulling-icon="ion-ios7-arrow-thin-down"
+       on-refresh="doRefresh()">
+    </ion-refresher>
+
+
+
+    <ion-tabs class="buy-sell">
+
+      <!-- Buying tab -->
+      <ion-tab title="Buying">
+        <ion-nav-view id="market-buy" name="marketBuy">
+            <div class="list card">
+
+              <!-- <a class="no-items-available" ng-if="doneLoading && emptyList.buy.enabled">
+                <i class="fa fa-exclamation"></i>
+                <span class="desc">No items available</span>
+              </a> -->
+
+              <a class="item item-avatar market-item"
+                  ng-repeat="item in products track by $index"
+                  ng-click="viewItemDescription(item, item.HEADER, 'Buy')"
+                  ng-if=" item.type=='buy' && ( subcategory==0 || item.category_id==subcategory) ">
+                <img class="icon" ng-src="{{item.BUY_image}}" />
+                <span class="title">{{item.title}}</span>
+                <span class="desc">{{item.sku}}</span>
+                <div class="flags">
+                  <div class="onsale" ng-if="item.flags.onsale">Onsale</div>
+                  <div class="offerspending" ng-if="item.flags.offerspending">Offerspending</div>
+                  <div class="finalday" ng-if="item.flags.price_negotiable">Price Negotiable</div>
+                  <div class="urgent" ng-if="item.flags.expiring_soon">Expiring Soon</div>
+                  <div class="discounted" ng-if="item.flags.discounted">Discounted</div>
+                </div>
+                <span class="price">${{item.price | number}}</span>
+                <i class="ion-ios-arrow-forward chevron"></i>
+              </a>
+            </div>
+            <div class="card tooltip" ng-if="doneLoading && emptyList.buy.enabled">
+              <span class="desc" ng-bind-html="emptyList.buy.message"></span>
+              <button class="button button-full button-assertive" ng-click="emptyList.buy.buttonLink()">{{emptyList.buy.buttonText}}</button>
+            </div>
+        </ion-nav-view>
+      </ion-tab>
+
+      <!-- Selling tab -->
+      <ion-tab title="Selling">
+        <ion-nav-view id="market-sell" name="marketSell">
+            <div class="list card">
+
+              <!-- <a class="no-items-available" ng-if="doneLoading && emptyList.sell.enabled">
+                <i class="fa fa-exclamation"></i>
+                <span class="desc">No items available</span>
+              </a> -->
+
+              <a class="item item-avatar market-item"
+                  ng-repeat="item in products track by $index"
+                  ng-click="viewItemDescription(item, item.HEADER, 'Sell')"
+                  ng-if=" item.type=='sell' && ( subcategory==0 || item.category_id==subcategory ) ">
+                <img class="icon" ng-src="{{item.SELL_image}}" />
+                <span class="title">{{item.title}}</span>
+                <span class="desc">
+                  {{item.sku}}
+                </span>
+                <div class="flags">
+                  <div class="onsale" ng-if="item.flags.onsale">onsale</div>
+                  <div class="offerspending" ng-if="item.flags.offerspending">offerspending</div>
+                  <div class="finalday" ng-if="item.flags.finalday">finalday</div>
+                  <div class="urgent" ng-if="item.flags.urgent">urgent</div>
+                </div>
+                <span class="price">${{item.price | number}}</span>
+                <i class="ion-ios-arrow-forward chevron"></i>
+              </a>
+            </div>
+            <div class="card tooltip" ng-if="doneLoading && emptyList.sell.enabled">
+              <span class="desc" ng-bind-html="emptyList.sell.message"></span>
+              <button class="button button-full button-assertive" ng-click="emptyList.sell.buttonLink()">{{emptyList.sell.buttonText}}</button>
+            </div>
+        </ion-nav-view>
+      </ion-tab>
+
+    </ion-tabs>
+  </ion-content>
+</ion-nav-view>
